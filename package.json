@@ -1,0 +1,10 @@
+{
+  "name": "cron-time",
+  "version": "0.0.1",
+  "description": "Cron Time Expression Generator",
+  "main": "index.js",
+  "repository": "https://github.com/trapcodeio/cron-time.git",
+  "author": "trapcode",
+  "license": "MIT",
+  "private": false
+}
