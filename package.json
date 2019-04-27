@@ -10,6 +10,7 @@
   "keywords": [
     "cron-time",
     "cron",
-    "cron-parser"
+    "cron-parser",
+    "node-cron"
   ]
 }
