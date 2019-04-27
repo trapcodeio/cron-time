@@ -17,7 +17,7 @@ yarn add cron-time
 
 ### Usage
 ```javascript
-const cronTime = require('./index');
+const cronTime = require('cron-time-generator');
 
 cronTime.everyMinute();
 // * * * * *
@@ -66,7 +66,7 @@ cronTime.every('uneven').hours();
 
 ### Between
 ```javascript
-const cronTime = require('./index');
+const cronTime = require('cron-time-generator');
 
 cronTime.between(1, 4).days();
 // Between  1 - 4 th day of the month 
