@@ -6,13 +6,13 @@ Tested on [CronTab.Guru](https://crontab.guru)
 
 ### Install
 ```console
-npm install cron-time
+npm install cron-time-generator
 ```
 
 OR
 
 ```console
-yarn add cron-time
+yarn add cron-time-generator
 ```
 
 ### Usage
