@@ -1,5 +1,5 @@
 // @ts-check
-let Helpers = require("./helpers");
+const Helpers = require("./helpers");
 
 /**
  * Every Time Class

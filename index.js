@@ -28,6 +28,16 @@ class CronTime {
         return Helpers.hour();
     }
 
+
+    /**
+     * Every Hour At
+     * @param $minuteOfTheHour - Minute of the hour.
+     * @returns {string}
+     */
+    static everyHourAt($minuteOfTheHour) {
+        return `${$minuteOfTheHour} * * * *`
+    }
+
     /**
      * Every Day
      */
@@ -37,25 +47,27 @@ class CronTime {
 
     /**
      * Every Day At
-     * @param {number} $hourOfTheDay - Hour of the Day
+     * @param {number} $hourOfTheDay - Hour of the day
+     * @param {number} $minuteOfTheHour - Minute of the Hour
      */
-    static everyDayAt($hourOfTheDay) {
-        return Helpers.day($hourOfTheDay);
+    static everyDayAt($hourOfTheDay, $minuteOfTheHour = 0) {
+        return `${$minuteOfTheHour} ${$hourOfTheDay} * * *`;
     }
 
     /**
      * Every Sunday
      */
     static everySunday() {
-        return Helpers.sunday();
+        return CronTime.everySundayAt(0);
     }
 
     /**
      * Every Sunday At
      * @param {number} $hourOfTheDay - Hour Of the Day
+     * @param {number} $minuteOfTheHour - Minute of the hour.
      */
-    static everySundayAt($hourOfTheDay) {
-        return Helpers.sunday($hourOfTheDay);
+    static everySundayAt($hourOfTheDay, $minuteOfTheHour = 0) {
+        return `${$minuteOfTheHour} ${$hourOfTheDay} * * SUN`;
     }
 
 
@@ -63,136 +75,148 @@ class CronTime {
      * Every Monday
      */
     static everyMonday() {
-        return Helpers.monday();
+        return CronTime.everyMondayAt(0);
     }
 
     /**
      * Every Monday At
-     * @param {number} $hourOfTheDay - Hour of the day.
+     * @param {number} $hourOfTheDay - Hour Of the Day
+     * @param {number} $minuteOfTheHour - Minute of the hour.
      */
-    static everyMondayAt($hourOfTheDay) {
-        return Helpers.monday($hourOfTheDay);
+    static everyMondayAt($hourOfTheDay, $minuteOfTheHour = 0) {
+        return `${$minuteOfTheHour} ${$hourOfTheDay} * * SUN`;
     }
 
     /**
      * Every Tuesday
      */
     static everyTuesday() {
-        return Helpers.tuesday();
+        return CronTime.everyTuesdayAt(0);
     }
 
     /**
      * Every Tuesday At
-     * @param {number} $hourOfTheDay - Hour of the day.
+     * @param {number} $hourOfTheDay - Hour Of the Day
+     * @param {number} $minuteOfTheHour - Minute of the hour.
      */
-    static everyTuesdayAt($hourOfTheDay) {
-        return Helpers.tuesday($hourOfTheDay);
+    static everyTuesdayAt($hourOfTheDay, $minuteOfTheHour = 0) {
+        return `${$minuteOfTheHour} ${$hourOfTheDay} * * TUE`;
     }
 
     /**
      * Every Wednesday
      */
     static everyWednesday() {
-        return Helpers.wednesday();
+        return CronTime.everyWednesdayAt(0);
     }
 
     /**
      * Every Wednesday At
-     * @param {number} $hourOfTheDay - Hour of the day.
+     * @param {number} $hourOfTheDay - Hour Of the Day
+     * @param {number} $minuteOfTheHour - Minute of the hour.
      */
-    static everyWednesdayAt($hourOfTheDay) {
-        return Helpers.wednesday($hourOfTheDay);
+    static everyWednesdayAt($hourOfTheDay, $minuteOfTheHour = 0) {
+        return `${$minuteOfTheHour} ${$hourOfTheDay} * * WED`;
     }
 
     /**
      * Every Thursday
      */
     static everyThursday() {
-        return Helpers.thursday();
+        return CronTime.everyThursdayAt(0);
     }
 
     /**
-     * Every Thurday At
-     * @param {number} $hourOfTheDay - Hour of the day.
+     * Every Thursday At
+     * @param {number} $hourOfTheDay - Hour Of the Day
+     * @param {number} $minuteOfTheHour - Minute of the hour.
      */
-    static everyThursdayAt($hourOfTheDay) {
-        return Helpers.thursday($hourOfTheDay);
+    static everyThursdayAt($hourOfTheDay, $minuteOfTheHour = 0) {
+        return `${$minuteOfTheHour} ${$hourOfTheDay} * * THU`;
     }
 
     /**
      * Every Friday
      */
     static everyFriday() {
-        return Helpers.friday();
+        return CronTime.everyFridayAt(0);
     }
 
     /**
      * Every Friday At
-     * @param {number} $hourOfTheDay - Hour of the day.
+     * @param {number} $hourOfTheDay - Hour Of the Day
+     * @param {number} $minuteOfTheHour - Minute of the hour.
      */
-    static everyFridayAt($hourOfTheDay) {
-        return Helpers.friday($hourOfTheDay);
+    static everyFridayAt($hourOfTheDay, $minuteOfTheHour = 0) {
+        return `${$minuteOfTheHour} ${$hourOfTheDay} * * FRI`;
     }
 
     /**
      * Every Saturday
      */
     static everySaturday() {
-        return Helpers.saturday();
+        return CronTime.everySundayAt(0);
     }
 
     /**
      * Every Saturday At
-     * @param {number} $hourOfTheDay - Hour of the day.
+     * @param {number} $hourOfTheDay - Hour Of the Day
+     * @param {number} $minuteOfTheHour - Minute of the hour.
      */
-    static everySaturdayAt($hourOfTheDay) {
-        return Helpers.saturday($hourOfTheDay);
+    static everySaturdayAt($hourOfTheDay, $minuteOfTheHour = 0) {
+        return `${$minuteOfTheHour} ${$hourOfTheDay} * * SAT`;
     }
 
     /**
      * Every Week
      */
     static everyWeek() {
-        return Helpers.week();
+        return CronTime.everyWeekAt(0);
     }
 
     /**
      * Every Week At
-     * @param {number} $hourOfTheDay - Hour of the day.
      * @param {number} $dayOfTheWeek - Day of the week
+     * @param {number} $hourOfTheDay - Hour of the day.
+     * @param {number} $minuteOfTheHour - Minute of the hour
      */
-    static everyWeekAt($hourOfTheDay, $dayOfTheWeek = 0) {
-        return Helpers.week($hourOfTheDay, $dayOfTheWeek);
+    static everyWeekAt($dayOfTheWeek, $hourOfTheDay = 0, $minuteOfTheHour = 0) {
+        return `${$minuteOfTheHour} ${$hourOfTheDay} * * ${$dayOfTheWeek}`
     }
 
     /**
      * Every Month
      */
     static everyMonth() {
-        return Helpers.month();
+        return CronTime.everyMonthOn(1);
     }
 
     /**
      * Every Month on
      * @param {number} $dayOfTheMonth - Day of the month
+     * @param {number} $hourOfTheDay - Hour of the day
+     * @param {number} $minuteOfTheHour - Minute of the hour
      */
-    static everyMonthOn($dayOfTheMonth = 1) {
-        return Helpers.month($dayOfTheMonth);
+    static everyMonthOn($dayOfTheMonth, $hourOfTheDay = 0, $minuteOfTheHour = 0) {
+        return `${$minuteOfTheHour} ${$hourOfTheDay} ${$dayOfTheMonth} * *`;
     }
 
     /**
      * Every Year
      */
     static everyYear() {
-        return Helpers.year()
+        return CronTime.everyYearIn(1)
     }
 
     /**
      * Every Year In
      * @param {number} $monthOfTheYear  - Month of the year
+     * @param $dayOfTheMonth - Day of the month
+     * @param $hourOfTheDay - Hour of the day
+     * @param $minuteOfTheHour - Minute of the hour.
      */
-    static everyYearIn($monthOfTheYear) {
-        return Helpers.year($monthOfTheYear)
+    static everyYearIn($monthOfTheYear, $dayOfTheMonth = 1, $hourOfTheDay = 0, $minuteOfTheHour = 0) {
+        return `${$minuteOfTheHour} ${$hourOfTheDay} ${$dayOfTheMonth} ${$monthOfTheYear} *`;
     }
 
     /**
