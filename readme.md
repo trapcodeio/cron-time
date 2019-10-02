@@ -31,11 +31,14 @@ cronTime.everyDay();
 cronTime.everyDayAt(6);
 // 0 6 * * *
 
+cronTime.everyDayAt(6, 15);
+// 15 6 * * *
+
 cronTime.everySunday();
 // 0 0 * * SUN
 
-cronTime.everySundayAt(4);
-// 0 4 * * SUN
+cronTime.everySundayAt(4, 30);
+// 30 4 * * SUN
 
 // E.T.C
 ```
@@ -83,46 +86,48 @@ cronTime.between(1, 4).days();
 
 `everyHour`
 
+`everyHourAt($minute)`
+
 `everyDay`
 
 `everyDayAt($hourOfTheDay)`
 
 `everySunday`
 
-`everySundayAt($hourOfTheDay)`
+`everySundayAt($hour, $minute?)`
 
 `everyMonday`
 
-`everyMondayAt($hourOfTheDay)`
+`everyMondayAt($hour, $minute?)`
 
 `everyTuesday`
 
-`everyTuesdayAt($hourOfTheDay)`
+`everyTuesdayAt($hour, $minute?)`
 
 `everyWednesday`
 
-`everyWednesdayAt($hourOfTheDay)`
+`everyWednesdayAt($hour, $minute?)`
 
 `everyThursday`
 
-`everyThursdayAt($hourOfTheDay)`
+`everyThursdayAt($hour, $minute?)`
 
 `everyFriday`
 
-`everyFridayAt($hourOfTheDay)`
+`everyFridayAt($hour, $minute?)`
 
 `everySaturday`
 
-`everySaturdayAt($hourOfTheDay)`
+`everySaturdayAt($hour, $minute?)`
 
 `everyWeek`
 
-`everyWeekAt($hourOfTheDay, $dayOfTheWeek)`
+`everyWeekAt($day, $hour?, $minute?)`
 
 `everyMonth`
 
-`everyMonthOn($dayOfTheMonth)`
+`everyMonthOn($day, $hour?, $minute?)`
 
 `everyYear`
 
-`everyYearIn($monthOfTheYear)`
+`everyYearIn($month, $day?, $hour?, $minute?)`
