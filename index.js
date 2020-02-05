@@ -84,7 +84,7 @@ class CronTime {
      * @param {number} $minuteOfTheHour - Minute of the hour.
      */
     static everyMondayAt($hourOfTheDay, $minuteOfTheHour = 0) {
-        return `${$minuteOfTheHour} ${$hourOfTheDay} * * SUN`;
+        return `${$minuteOfTheHour} ${$hourOfTheDay} * * MON`;
     }
 
     /**
