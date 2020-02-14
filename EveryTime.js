@@ -44,31 +44,35 @@ class EveryTime {
      * Every nth Hour
      */
     hours() {
+        const hour = Helpers.hour();
+
         if (this.config["between"] && Array.isArray(this.interval)) {
             this.config["between"] = false;
             return Helpers.spliceIntoPosition(
                 1,
                 this.interval.join("-"),
-                Helpers.hour()
+                hour
             );
         }
 
         if (typeof this.interval === "number" && this.interval > 1) {
-            return Helpers.spliceIntoPosition(1, "*/" + this.interval);
+            return Helpers.spliceIntoPosition(1, "*/" + this.interval, hour);
         } else if (this.interval === "uneven") {
-            return Helpers.spliceIntoPosition(1, "1-23/2");
+            return Helpers.spliceIntoPosition(1, "1-23/2", hour);
         }
 
-        return Helpers.hour();
+        return hour;
     }
 
     /**
      * Every nth Days
      */
     days() {
+        const day = Helpers.day();
+
         if (this.config["at"]) {
             this.config["at"] = false;
-            return Helpers.spliceIntoPosition(2, this.config.at, Helpers.day());
+            return Helpers.spliceIntoPosition(2, this.config.at, day);
         }
 
         if (this.config["between"] && Array.isArray(this.interval)) {
@@ -76,17 +80,17 @@ class EveryTime {
             return Helpers.spliceIntoPosition(
                 2,
                 this.interval.join("-"),
-                Helpers.day()
+                day
             );
         }
 
         if (typeof this.interval === "number" && this.interval > 1) {
-            return Helpers.spliceIntoPosition(2, "*/" + this.interval, Helpers.day());
+            return Helpers.spliceIntoPosition(2, "*/" + this.interval, day);
         } else if (this.interval === "uneven") {
-            return Helpers.spliceIntoPosition(2, "1-31/2", Helpers.day());
+            return Helpers.spliceIntoPosition(2, "1-31/2", day);
         }
 
-        return Helpers.day();
+        return day;
     }
 }
 
