@@ -185,6 +185,78 @@ class CronTime {
     }
 
     /**
+     * Every WeekDay
+     * @param {number|string} $startDay - Starting day (Monday=1, Sunday=0)
+     * @param {number|string} $endDay - Starting day (Monday=1, Sunday=0)
+     * @returns {string}
+     *
+     * @example
+     * cronTime.everyWeekDay()
+     *  // Monday to Friday
+     * cronTime.everyWeekDay('sunday', 'thursday')
+     *  // Sunday to Thursday
+     */
+    static everyWeekDay($startDay = 'monday', $endDay = 'friday') {
+        $startDay = Helpers.dayToInt($startDay);
+        $endDay = Helpers.dayToInt($endDay);
+
+        Helpers.validateStartToEndDay($startDay, $endDay);
+
+        return `0 0 * * ${$startDay}-${$endDay}`
+    }
+
+    /**
+     * Every WeekDay At
+     * @param {number} $hourOfTheDay - Hour of the day
+     * @param {number} $minuteOfTheHour - Minute of the hour
+     * @param {number|string} $startDay - Starting day
+     * @param {number|string} $endDay - Ending day
+     * @returns {string}
+     */
+    static everyWeekDayAt($hourOfTheDay, $minuteOfTheHour = 0, $startDay = 'monday', $endDay = 'friday') {
+        $startDay = Helpers.dayToInt($startDay);
+        $endDay = Helpers.dayToInt($endDay);
+
+        Helpers.validateStartToEndDay($startDay, $endDay);
+
+        return `${$minuteOfTheHour} ${$hourOfTheDay} * * ${$startDay}-${$endDay}`
+    }
+
+    /**
+     * Every Weekend
+     * @param {number|string} $startDay - Starting day (Monday=1, Sunday=0)
+     * @param {number|string} $endDay - Starting day (Monday=1, Sunday=0)
+     * @returns {string}
+     *
+     * @example
+     * cronTime.everyWeekend()
+     *  // Saturday and Sunday
+     * cronTime.everyWeekend('friday', 'saturday')
+     *  // Friday and Saturday
+     */
+    static everyWeekend($startDay = 'saturday', $endDay = 'sunday') {
+        $startDay = Helpers.dayToInt($startDay);
+        $endDay = Helpers.dayToInt($endDay);
+
+        return `0 0 * * ${$startDay},${$endDay}`
+    }
+
+    /**
+     * Every Weekend At
+     * @param {number} $hourOfTheDay - Hour of the day
+     * @param {number} $minuteOfTheHour - Minute of the hour
+     * @param {number|string} $startDay - Starting day
+     * @param {number|string} $endDay - Ending day
+     * @returns {string}
+     */
+    static everyWeekendAt($hourOfTheDay, $minuteOfTheHour = 0, $startDay = 'saturday', $endDay = 'sunday') {
+        $startDay = Helpers.dayToInt($startDay);
+        $endDay = Helpers.dayToInt($endDay);
+
+        return `${$minuteOfTheHour} ${$hourOfTheDay} * * ${$startDay},${$endDay}`
+    }
+
+    /**
      * Every Month
      */
     static everyMonth() {

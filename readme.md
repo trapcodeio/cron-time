@@ -40,8 +40,49 @@ cronTime.everySunday();
 cronTime.everySundayAt(4, 30);
 // 30 4 * * SUN
 
+cronTime.everyWeekDay();
+// 0 0 * * 1-5
+// from Monday to Friday
+
+cronTime.everyWeekDayAt(1, 30);
+// 30 1 * * 1-5
+// 1:30 AM from Monday to Friday
+
+
+cronTime.everyWeekend();
+// 0 0 * * 6,0
+// on Saturday and Sunday
+
+cronTime.everyWeekendAt(1, 30);
+// 30 1 * * 6,0
+// 1:30 AM on Saturday and Sunday
+
 // E.T.C
 ```
+
+For `everyWeekDay` and `everyWeekend` there is also an option to change the starting day.
+
+By default week days is from **Monday** to **Friday** while weekend days are **Saturdays** and **Sundays**
+
+This can be changed like so:
+```javascript
+cronTime.everyWeekDay("sunday", "thursday");
+// 0 0 * * 0-4
+// from Sunday to Thursday
+
+cronTime.everyWeekDayAt(1, 30, "sunday", "thursday");
+// 30 1 * * 0-4
+// 1:30 AM from Sunday to Thursday
+
+cronTime.everyWeekend("friday", "saturday");
+// 0 0 * * 5,6
+// on Friday and Saturday
+
+cronTime.everyWeekendAt(1, 30, "friday", "saturday");
+// 30 1 * * 5,6
+// 1:30 AM on Friday and Saturday
+```
+Note: if a `$startDay` is specified then an `$endDay` must be specified also, else it will use the default values which may not tally with your new `$startDay`
 
 Every method of `CronTime` returns exactly what its name says.
 
@@ -123,6 +164,14 @@ cronTime.between(1, 4).days();
 `everyWeek`
 
 `everyWeekAt($day, $hour?, $minute?)`
+
+`everyWeekDay`
+
+`everyWeekDayAt($hour, $minute, $startDay, $endDay)`
+
+`everyWeekend`
+
+`everyWeekendAt($hour, $minute, $startDay, $endDay)`
 
 `everyMonth`
 
