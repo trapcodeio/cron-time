@@ -1,10 +1,10 @@
 {
-  "name": "cron-time-generator",
-  "version": "1.0.3",
+  "name": "@damunga/cron-time-generator",
+  "version": "1.0.4",
   "description": "Cron Time Expression Generator",
   "main": "index.js",
-  "repository": "https://github.com/trapcodeio/cron-time.git",
-  "author": "trapcode",
+  "repository": "https://github.com/DavidAmunga/cron-time.git",
+  "author": "davidamunga",
   "license": "MIT",
   "private": false,
   "keywords": [
