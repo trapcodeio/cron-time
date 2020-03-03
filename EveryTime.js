@@ -65,13 +65,17 @@ class EveryTime {
     }
 
     /**
-     * Every nth Days
+     * Every nth Days after
+     * @param $hoursOfDay
+     * @param $minutesOfDay
      */
-    days() {
-        const day = Helpers.day();
+    days($hoursOfDay = 0, $minutesOfDay = 0) {
+        const day = Helpers.day($hoursOfDay, $minutesOfDay);
+
 
         if (this.config["at"]) {
             this.config["at"] = false;
+
             return Helpers.spliceIntoPosition(2, this.config.at, day);
         }
 
@@ -84,6 +88,7 @@ class EveryTime {
             );
         }
 
+
         if (typeof this.interval === "number" && this.interval > 1) {
             return Helpers.spliceIntoPosition(2, "*/" + this.interval, day);
         } else if (this.interval === "uneven") {
@@ -92,6 +97,8 @@ class EveryTime {
 
         return day;
     }
+
+
 }
 
 EveryTime.prototype.interval = 1;

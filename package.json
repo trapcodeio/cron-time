@@ -4,7 +4,7 @@
   "description": "Cron Time Expression Generator",
   "main": "index.js",
   "repository": "https://github.com/trapcodeio/cron-time.git",
-  "author": "trapcode",
+  "author": "trapcodeio",
   "license": "MIT",
   "private": false,
   "keywords": [

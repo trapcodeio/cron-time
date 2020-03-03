@@ -99,6 +99,10 @@ cronTime.every(2).hours();
 cronTime.every(7).days();
 // Every 7 Days
 
+cronTime.every(7).days(9, 5);
+// Every 7 days at 9:05
+
+
 cronTime.every('even').hours();
 // Every Even Hours
 // * */2 * * *
