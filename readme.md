@@ -6,13 +6,13 @@ Tested on [CronTab.Guru](https://crontab.guru)
 
 ### Install
 ```console
-npm install @damunga/cron-time-generator
+npm install crontab-time-generator
 ```
 
 OR
 
 ```console
-yarn add @damunga/cron-time-generator
+yarn add crontab-time-generator
 ```
 
 ### Usage
@@ -113,7 +113,7 @@ cronTime.every('uneven').hours();
 
 ### Between
 ```javascript
-const cronTime = require('@damunga/cron-time-generator');
+const cronTime = require('crontab-time-generator');
 
 cronTime.between(1, 4).days();
 // Between  1 - 4 th day of the month 

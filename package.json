@@ -1,5 +1,5 @@
 {
-  "name": "@damunga/cron-time-generator",
+  "name": "crontab-time-generator",
   "version": "1.0.4",
   "description": "Cron Time Expression Generator",
   "main": "index.js",
