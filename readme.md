@@ -6,13 +6,13 @@ Tested on [CronTab.Guru](https://crontab.guru)
 
 ### Install
 ```console
-npm install cron-time-generator
+npm install crontab-time-generator
 ```
 
 OR
 
 ```console
-yarn add cron-time-generator
+yarn add crontab-time-generator
 ```
 
 ### Usage
@@ -99,6 +99,9 @@ cronTime.every(2).hours();
 cronTime.every(7).days();
 // Every 7 Days
 
+cronTime.every(7).days(9,05);
+// Every 7 Days at 09:05
+
 cronTime.every('even').hours();
 // Every Even Hours
 // * */2 * * *
@@ -110,7 +113,7 @@ cronTime.every('uneven').hours();
 
 ### Between
 ```javascript
-const cronTime = require('cron-time-generator');
+const cronTime = require('crontab-time-generator');
 
 cronTime.between(1, 4).days();
 // Between  1 - 4 th day of the month 
