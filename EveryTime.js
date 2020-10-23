@@ -72,7 +72,6 @@ class EveryTime {
     days($hoursOfDay = 0, $minutesOfDay = 0) {
         const day = Helpers.day($hoursOfDay, $minutesOfDay);
 
-
         if (this.config["at"]) {
             this.config["at"] = false;
 

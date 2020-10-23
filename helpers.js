@@ -70,7 +70,7 @@ let Helpers = {
      * @param $endDay
      */
     validateStartToEndDay($startDay, $endDay) {
-        if ($startDay > $endDay) throw Error("$startDay must come before $endDay following calendar sequence.");
+        if ($startDay > $endDay) throw Error("$startDay must come before $endDay following normal calendar sequence.");
     }
 };
 

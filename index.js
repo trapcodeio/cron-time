@@ -1,4 +1,4 @@
-let Helpers = require('./helpers');
+const Helpers = require('./helpers');
 const EveryTime = require('./EveryTime');
 
 /**
