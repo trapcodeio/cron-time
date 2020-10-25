@@ -1,19 +1,18 @@
 // @ts-check
 export = {
     /**
-     *
-     * @param {number} $position
-     * @param {*} $value
-     * @param {string} $str
+     * @param {number} position
+     * @param {*} value
+     * @param {string} str
      */
-    spliceIntoPosition($position: number, $value: string, $str: string | undefined = undefined): string {
-        if ($str === undefined) {
-            $str = this.minute();
+    spliceIntoPosition(position: number, value: string, str: string | undefined = undefined): string {
+        if (str === undefined) {
+            str = this.minute();
         }
 
-        let $default = $str.split(' ');
-        $default.splice($position, 1, $value);
-        return $default.join(' ');
+        let def = str.split(' ');
+        def.splice(position, 1, value);
+        return def.join(' ');
     },
 
 

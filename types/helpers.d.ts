@@ -1,11 +1,10 @@
 declare const _default: {
     /**
-     *
-     * @param {number} $position
-     * @param {*} $value
-     * @param {string} $str
+     * @param {number} position
+     * @param {*} value
+     * @param {string} str
      */
-    spliceIntoPosition($position: number, $value: string, $str?: string | undefined): string;
+    spliceIntoPosition(position: number, value: string, str?: string | undefined): string;
     minute(): string;
     hour(): string;
     day(hourOfTheDay?: number, minuteOfTheHour?: number): string;

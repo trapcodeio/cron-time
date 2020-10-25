@@ -1,6 +1,6 @@
 # Cron-Time
 
-Cron Time Expression Generator/Builder
+Cron Time Expression Generator/Builder written in typescript.
 
 Tested on [CronTab.Guru](https://crontab.guru)
 
@@ -18,6 +18,8 @@ yarn add cron-time-generator
 ### Usage
 ```javascript
 const cronTime = require('cron-time-generator');
+// OR (Typescript)
+import cronTime from "cron-time-generator";
 
 cronTime.everyMinute();
 // * * * * *
@@ -82,13 +84,13 @@ cronTime.everyWeekendAt(1, 30, "friday", "saturday");
 // 30 1 * * 5,6
 // 1:30 AM on Friday and Saturday
 ```
-Note: if a `$startDay` is specified then an `$endDay` must be specified also, else it will use the default values which may not tally with your new `$startDay`
+Note: if a `startDay` is specified then an `endDay` must be specified also, else it will use the default values which may not tally with your new `$startDay`
 
 Every method of `CronTime` returns exactly what its name says.
 
 ### Every Nth Time
 ```javascript
-const cronTime = require('./index');
+const cronTime = require('cron-time-generator');
 
 cronTime.every(5).minutes();
 // Every Five Minutes
@@ -131,56 +133,56 @@ cronTime.between(1, 4).days();
 
 `everyHour`
 
-`everyHourAt($minute)`
+`everyHourAt(minuteOfTheHour)`
 
 `everyDay`
 
-`everyDayAt($hourOfTheDay)`
+`everyDayAt(hourOfTheDay)`
 
 `everySunday`
 
-`everySundayAt($hour, $minute?)`
+`everySundayAt(hour, minute?)`
 
 `everyMonday`
 
-`everyMondayAt($hour, $minute?)`
+`everyMondayAt(hour, minute?)`
 
 `everyTuesday`
 
-`everyTuesdayAt($hour, $minute?)`
+`everyTuesdayAt(hour, minute?)`
 
 `everyWednesday`
 
-`everyWednesdayAt($hour, $minute?)`
+`everyWednesdayAt(hour, minute?)`
 
 `everyThursday`
 
-`everyThursdayAt($hour, $minute?)`
+`everyThursdayAt(hour, minute?)`
 
 `everyFriday`
 
-`everyFridayAt($hour, $minute?)`
+`everyFridayAt(hour, minute?)`
 
 `everySaturday`
 
-`everySaturdayAt($hour, $minute?)`
+`everySaturdayAt(hour, minute?)`
 
 `everyWeek`
 
-`everyWeekAt($day, $hour?, $minute?)`
+`everyWeekAt(day, hour?, minute?)`
 
 `everyWeekDay`
 
-`everyWeekDayAt($hour, $minute, $startDay, $endDay)`
+`everyWeekDayAt(hour, $minute, startDay, endDay)`
 
 `everyWeekend`
 
-`everyWeekendAt($hour, $minute, $startDay, $endDay)`
+`everyWeekendAt(hour, minute, startDay, endDay)`
 
 `everyMonth`
 
-`everyMonthOn($day, $hour?, $minute?)`
+`everyMonthOn(day, hour?, minute?)`
 
 `everyYear`
 
-`everyYearIn($month, $day?, $hour?, $minute?)`
+`everyYearIn(month, day?, hour?, minute?)`

@@ -16,14 +16,14 @@ class EveryTime {
 
     /**
      *
-     * @param {number[]|string|number} $every
-     * @param {{}} $config
+     * @param {number[]|string|number} every
+     * @param {{}} config
      */
-    constructor($every: TimeInterval, $config: StringToAnyObject = {}) {
-        if ($every === "even") $every = 2;
-        this.interval = $every;
+    constructor(every: TimeInterval, config: StringToAnyObject = {}) {
+        if (every === "even") every = 2;
+        this.interval = every;
 
-        this.config = Object.assign(this.config, $config);
+        this.config = Object.assign(this.config, config);
         return this;
     }
 
@@ -75,11 +75,11 @@ class EveryTime {
 
     /**
      * Every nth Days after
-     * @param $hoursOfDay
+     * @param hoursOfDay
      * @param $minutesOfDay
      */
-    days($hoursOfDay = 0, $minutesOfDay = 0): string {
-        const day = Helpers.day($hoursOfDay, $minutesOfDay);
+    days(hoursOfDay = 0, $minutesOfDay = 0): string {
+        const day = Helpers.day(hoursOfDay, $minutesOfDay);
 
         // if (this.config["at"]) {
         //     this.config["at"] = false;

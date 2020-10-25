@@ -5,10 +5,10 @@ import EveryTime from './EveryTime';
 declare class CronTime {
     /**
      * Every nth Time
-     * @param $int
      * @return {EveryTime}
+     * @param interval
      */
-    static every($int: number): EveryTime;
+    static every(interval: number): EveryTime;
     /**
      * Every Minute
      */
@@ -109,11 +109,11 @@ declare class CronTime {
     static everyWeek(): string;
     /**
      * Every Week At
-     * @param {number} $dayOfTheWeek - Day of the week
+     * @param {number} dayOfTheWeek - Day of the week
      * @param {number} hourOfTheDay - Hour of the day.
      * @param {number} minuteOfTheHour - Minute of the hour
      */
-    static everyWeekAt($dayOfTheWeek: number, hourOfTheDay?: number, minuteOfTheHour?: number): string;
+    static everyWeekAt(dayOfTheWeek: number, hourOfTheDay?: number, minuteOfTheHour?: number): string;
     /**
      * Every WeekDay
      * @param {number|string} startDay - Starting day (Monday=1, Sunday=0)
@@ -164,28 +164,28 @@ declare class CronTime {
     static everyMonth(): string;
     /**
      * Every Month on
-     * @param {number} $dayOfTheMonth - Day of the month
+     * @param {number} dayOfTheMonth - Day of the month
      * @param {number} hourOfTheDay - Hour of the day
      * @param {number} minuteOfTheHour - Minute of the hour
      */
-    static everyMonthOn($dayOfTheMonth: number, hourOfTheDay?: number, minuteOfTheHour?: number): string;
+    static everyMonthOn(dayOfTheMonth: number, hourOfTheDay?: number, minuteOfTheHour?: number): string;
     /**
      * Every Year
      */
     static everyYear(): string;
     /**
      * Every Year In
-     * @param {number} $monthOfTheYear  - Month of the year
-     * @param $dayOfTheMonth - Day of the month
+     * @param {number} monthOfTheYear  - Month of the year
+     * @param dayOfTheMonth - Day of the month
      * @param hourOfTheDay - Hour of the day
      * @param minuteOfTheHour - Minute of the hour.
      */
-    static everyYearIn($monthOfTheYear: number, $dayOfTheMonth?: number, hourOfTheDay?: number, minuteOfTheHour?: number): string;
+    static everyYearIn(monthOfTheYear: number, dayOfTheMonth?: number, hourOfTheDay?: number, minuteOfTheHour?: number): string;
     /**
      * Between Time Frames
-     * @param {number} $start - Start
-     * @param {number} $end - End
+     * @param {number} start - Start
+     * @param {number} end - End
      */
-    static between($start: number, $end: number): EveryTime;
+    static between(start: number, end: number): EveryTime;
 }
 export = CronTime;

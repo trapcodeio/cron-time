@@ -13,10 +13,10 @@ declare class EveryTime {
     config: EveryTimeConfig;
     /**
      *
-     * @param {number[]|string|number} $every
-     * @param {{}} $config
+     * @param {number[]|string|number} every
+     * @param {{}} config
      */
-    constructor($every: TimeInterval, $config?: StringToAnyObject);
+    constructor(every: TimeInterval, config?: StringToAnyObject);
     /**
      * Every nth Minute
      */
@@ -27,9 +27,9 @@ declare class EveryTime {
     hours(): string;
     /**
      * Every nth Days after
-     * @param $hoursOfDay
+     * @param hoursOfDay
      * @param $minutesOfDay
      */
-    days($hoursOfDay?: number, $minutesOfDay?: number): string;
+    days(hoursOfDay?: number, $minutesOfDay?: number): string;
 }
 export = EveryTime;

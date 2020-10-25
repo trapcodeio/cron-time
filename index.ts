@@ -7,11 +7,11 @@ import EveryTime from './EveryTime';
 class CronTime {
     /**
      * Every nth Time
-     * @param $int
      * @return {EveryTime}
+     * @param interval
      */
-    static every($int: number): EveryTime {
-        return new EveryTime($int);
+    static every(interval: number): EveryTime {
+        return new EveryTime(interval);
     }
 
     /**
@@ -176,12 +176,12 @@ class CronTime {
 
     /**
      * Every Week At
-     * @param {number} $dayOfTheWeek - Day of the week
+     * @param {number} dayOfTheWeek - Day of the week
      * @param {number} hourOfTheDay - Hour of the day.
      * @param {number} minuteOfTheHour - Minute of the hour
      */
-    static everyWeekAt($dayOfTheWeek: number, hourOfTheDay: number = 0, minuteOfTheHour: number = 0): string {
-        return `${minuteOfTheHour} ${hourOfTheDay} * * ${$dayOfTheWeek}`
+    static everyWeekAt(dayOfTheWeek: number, hourOfTheDay: number = 0, minuteOfTheHour: number = 0): string {
+        return `${minuteOfTheHour} ${hourOfTheDay} * * ${dayOfTheWeek}`
     }
 
     /**
@@ -265,12 +265,12 @@ class CronTime {
 
     /**
      * Every Month on
-     * @param {number} $dayOfTheMonth - Day of the month
+     * @param {number} dayOfTheMonth - Day of the month
      * @param {number} hourOfTheDay - Hour of the day
      * @param {number} minuteOfTheHour - Minute of the hour
      */
-    static everyMonthOn($dayOfTheMonth: number, hourOfTheDay = 0, minuteOfTheHour = 0): string {
-        return `${minuteOfTheHour} ${hourOfTheDay} ${$dayOfTheMonth} * *`;
+    static everyMonthOn(dayOfTheMonth: number, hourOfTheDay = 0, minuteOfTheHour = 0): string {
+        return `${minuteOfTheHour} ${hourOfTheDay} ${dayOfTheMonth} * *`;
     }
 
     /**
@@ -282,22 +282,22 @@ class CronTime {
 
     /**
      * Every Year In
-     * @param {number} $monthOfTheYear  - Month of the year
-     * @param $dayOfTheMonth - Day of the month
+     * @param {number} monthOfTheYear  - Month of the year
+     * @param dayOfTheMonth - Day of the month
      * @param hourOfTheDay - Hour of the day
      * @param minuteOfTheHour - Minute of the hour.
      */
-    static everyYearIn($monthOfTheYear: number, $dayOfTheMonth: number = 1, hourOfTheDay: number = 0, minuteOfTheHour: number = 0): string {
-        return `${minuteOfTheHour} ${hourOfTheDay} ${$dayOfTheMonth} ${$monthOfTheYear} *`;
+    static everyYearIn(monthOfTheYear: number, dayOfTheMonth: number = 1, hourOfTheDay: number = 0, minuteOfTheHour: number = 0): string {
+        return `${minuteOfTheHour} ${hourOfTheDay} ${dayOfTheMonth} ${monthOfTheYear} *`;
     }
 
     /**
      * Between Time Frames
-     * @param {number} $start - Start
-     * @param {number} $end - End
+     * @param {number} start - Start
+     * @param {number} end - End
      */
-    static between($start: number, $end: number) {
-        return new EveryTime([$start, $end], {
+    static between(start: number, end: number) {
+        return new EveryTime([start, end], {
             between: true
         })
     }
