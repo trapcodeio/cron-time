@@ -1,12 +1,12 @@
 // @ts-check
-let Helpers = {
+export = {
     /**
      *
      * @param {number} $position
      * @param {*} $value
      * @param {string} $str
      */
-    spliceIntoPosition($position, $value, $str = undefined) {
+    spliceIntoPosition($position: number, $value: string, $str: string | undefined = undefined): string {
         if ($str === undefined) {
             $str = this.minute();
         }
@@ -17,16 +17,16 @@ let Helpers = {
     },
 
 
-    minute() {
+    minute(): string {
         return '* * * * *';
     },
 
-    hour() {
+    hour(): string {
         return '0 * * * *'
     },
 
-    day($hourOfTheDay = 0, $minuteOfTheHour = 0) {
-        return `${$minuteOfTheHour} ${$hourOfTheDay} * * *`
+    day(hourOfTheDay: number = 0, minuteOfTheHour: number = 0): string {
+        return `${minuteOfTheHour} ${hourOfTheDay} * * *`
     },
 
     /**
@@ -37,9 +37,8 @@ let Helpers = {
      *  Helpers.dayToInt('sunday') // 0
      *  Helpers.dayToInt('monday') // 1
      */
-    dayToInt(day) {
-        if (typeof day !== "string") return day;
-
+    dayToInt(day: number | string): number {
+        if (typeof day === "number") return day;
         day = day.toLowerCase();
 
         switch (day) {
@@ -66,12 +65,10 @@ let Helpers = {
     /**
      * Checks of startDay and endDay follows calendar sequence.
      * else throws error.
-     * @param $startDay
-     * @param $endDay
+     * @param startDay
+     * @param endDay
      */
-    validateStartToEndDay($startDay, $endDay) {
-        if ($startDay > $endDay) throw Error("$startDay must come before $endDay following normal calendar sequence.");
+    validateStartToEndDay(startDay: number, endDay: number) {
+        if (startDay > endDay) throw Error("startDay must come before endDay following normal calendar sequence.");
     }
 };
-
-module.exports = Helpers;

@@ -1,16 +1,25 @@
 // @ts-check
-const Helpers = require("./helpers");
+import Helpers from "./helpers";
+
+type TimeInterval = number | "even" | "uneven" | number[];
+type StringToAnyObject = { [key: string]: any };
+type EveryTimeConfig = {
+    between?: boolean
+}
 
 /**
  * Every Time Class
  */
 class EveryTime {
+    public interval: TimeInterval = 1;
+    public config: EveryTimeConfig = {}
+
     /**
      *
      * @param {number[]|string|number} $every
      * @param {{}} $config
      */
-    constructor($every, $config = {}) {
+    constructor($every: TimeInterval, $config: StringToAnyObject = {}) {
         if ($every === "even") $every = 2;
         this.interval = $every;
 
@@ -21,7 +30,7 @@ class EveryTime {
     /**
      * Every nth Minute
      */
-    minutes() {
+    minutes(): string {
         if (this.config["between"] && Array.isArray(this.interval)) {
             this.config["between"] = false;
             return Helpers.spliceIntoPosition(
@@ -43,7 +52,7 @@ class EveryTime {
     /**
      * Every nth Hour
      */
-    hours() {
+    hours(): string {
         const hour = Helpers.hour();
 
         if (this.config["between"] && Array.isArray(this.interval)) {
@@ -69,14 +78,14 @@ class EveryTime {
      * @param $hoursOfDay
      * @param $minutesOfDay
      */
-    days($hoursOfDay = 0, $minutesOfDay = 0) {
+    days($hoursOfDay = 0, $minutesOfDay = 0): string {
         const day = Helpers.day($hoursOfDay, $minutesOfDay);
 
-        if (this.config["at"]) {
-            this.config["at"] = false;
-
-            return Helpers.spliceIntoPosition(2, this.config.at, day);
-        }
+        // if (this.config["at"]) {
+        //     this.config["at"] = false;
+        //
+        //     return Helpers.spliceIntoPosition(2, this.config.at, day);
+        // }
 
         if (this.config["between"] && Array.isArray(this.interval)) {
             this.config["between"] = false;
@@ -100,7 +109,4 @@ class EveryTime {
 
 }
 
-EveryTime.prototype.interval = 1;
-EveryTime.prototype.config = {};
-
-module.exports = EveryTime;
+export = EveryTime;
