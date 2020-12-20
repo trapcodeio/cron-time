@@ -2,7 +2,8 @@
   "name": "cron-time-generator",
   "version": "1.0.7",
   "description": "Cron Time Expression Generator",
-  "main": "dist/index.js",
+  "main": "./dist/index.js",
+  "types": "./dist/types/index.d.ts",
   "repository": "https://github.com/trapcodeio/cron-time.git",
   "author": "trapcodeio",
   "scripts": {
@@ -20,10 +21,8 @@
     "node-cron"
   ],
   "devDependencies": {
-    "@types/node": "^14.11.5",
+    "@types/node": "^14.14.14",
     "japa": "^3.1.1",
-    "ts-node": "^9.0.0",
-    "ts-node-dev": "^1.0.0-pre.63",
-    "typescript": "^4.0.3"
+    "typescript": "^4.1.3"
   }
 }
