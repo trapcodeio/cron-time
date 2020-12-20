@@ -1,4 +1,20 @@
-// @ts-check
+const DaysDictionary: Record<string,number> = {
+    sun: 0,
+    mon: 1,
+    tue: 2,
+    wed: 3,
+    thu: 4,
+    fri: 5,
+    sat: 6,
+    sunday: 0,
+    monday: 1,
+    tuesday: 2,
+    wednesday: 3,
+    thursday: 4,
+    friday: 5,
+    saturday: 6,
+};
+
 export = {
     /**
      * @param {number} position
@@ -38,26 +54,30 @@ export = {
      */
     dayToInt(day: number | string): number {
         if (typeof day === "number") return day;
-        day = day.toLowerCase();
+        day = day.trim().toLowerCase();
 
-        switch (day) {
-            case "sunday":
-                return 0;
-            case "monday":
-                return 1;
-            case "tuesday":
-                return 2;
-            case "wednesday":
-                return 3;
-            case "thursday":
-                return 4;
-            case "friday":
-                return 5;
-            case "saturday":
-                return 6;
-            default:
-                throw Error(`Day: "${day}" is not a valid day.`);
+        if (!DaysDictionary.hasOwnProperty(day))
+            throw Error(`Day: "${day}" is not a valid day.`);
+
+        return DaysDictionary[day];
+    },
+
+
+    /**
+     * Get the integer representation of multiple day strings.
+     * @param days
+     */
+    daysToIntegers(days: (string | number)[]): number[] {
+        const newDays: number[] = [];
+        for (const day of days) {
+            if (typeof day === "string") {
+                newDays.push(this.dayToInt(day))
+            } else {
+                newDays.push(day);
+            }
         }
+
+        return newDays;
     },
 
 

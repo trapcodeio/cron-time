@@ -64,7 +64,7 @@ cronTime.everyWeekendAt(1, 30);
 
 For `everyWeekDay` and `everyWeekend` there is also an option to change the starting day.
 
-By default week days is from **Monday** to **Friday** while weekend days are **Saturdays** and **Sundays**
+By default, week days is from **Monday** to **Friday** while weekend days are **Saturdays** and **Sundays**
 
 This can be changed like so:
 ```javascript
@@ -87,6 +87,15 @@ cronTime.everyWeekendAt(1, 30, "friday", "saturday");
 Note: if a `startDay` is specified then an `endDay` must be specified also, else it will use the default values which may not tally with your new `$startDay`
 
 Every method of `CronTime` returns exactly what its name says.
+
+### onSpecificDays and onSpecificDaysAt
+To target specific days
+```javascript
+cronTime.onSpecificDays(['sunday', 'tuesday', 'thursday']); // 0 0 * * 0,2,4
+
+// With time 
+cronTime.onSpecificDaysAt(['sunday', 'tuesday', 'thursday'], 3, 30); // 0 0 * * 0,2,4
+```
 
 ### Every Nth Time
 ```javascript
@@ -121,6 +130,7 @@ const cronTime = require('cron-time-generator');
 cronTime.between(1, 4).days();
 // Between  1 - 4 th day of the month 
 ```
+
 
 
 ### All Functions

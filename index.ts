@@ -180,7 +180,7 @@ class CronTime {
      * @param {number} hourOfTheDay - Hour of the day.
      * @param {number} minuteOfTheHour - Minute of the hour
      */
-    static everyWeekAt(dayOfTheWeek: number, hourOfTheDay: number = 0, minuteOfTheHour: number = 0): string {
+    static everyWeekAt(dayOfTheWeek: number | string, hourOfTheDay: number = 0, minuteOfTheHour: number = 0): string {
         return `${minuteOfTheHour} ${hourOfTheDay} * * ${dayOfTheWeek}`
     }
 
@@ -203,6 +203,24 @@ class CronTime {
         Helpers.validateStartToEndDay(startDay, endDay);
 
         return `0 0 * * ${startDay}-${endDay}`
+    }
+
+
+    static onSpecificDays(days: (string | number)[]) {
+        if (!Array.isArray(days) || days.length) {
+            throw new Error("onSpecificDays requires days to be an array of days string.");
+        }
+        days = Helpers.daysToIntegers(days);
+        return `0 0 * * ${days}`
+    }
+
+    static onSpecificDaysAt(days: (string | number)[], hourOfTheDay: number, minuteOfTheHour: number = 0) {
+        if (!Array.isArray(days) || days.length === 0) {
+            throw new Error("onSpecificDays requires days to be an array of days string.");
+        }
+
+        days = Helpers.daysToIntegers(days);
+        return `${minuteOfTheHour} ${hourOfTheDay} * * ${days}`
     }
 
     /**
