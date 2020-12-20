@@ -168,6 +168,34 @@ class CronTime {
     }
 
     /**
+     * On Specific Days
+     * @param {(string|number)[]} days
+     */
+    static onSpecificDays(days: (string | number)[]) {
+        if (!Array.isArray(days) || days.length) {
+            throw new Error("onSpecificDays requires days to be an array of days string.");
+        }
+        days = Helpers.daysToIntegers(days);
+        return `0 0 * * ${days}`
+    }
+
+
+    /**
+     * On Specific Days At
+     * @param {(string|number)[]} days
+     * @param {number} hourOfTheDay - Hour of the Day
+     * @param {number} minuteOfTheHour - Minute of the hour
+     */
+    static onSpecificDaysAt(days: (string | number)[], hourOfTheDay: number, minuteOfTheHour: number = 0) {
+        if (!Array.isArray(days) || days.length === 0) {
+            throw new Error("onSpecificDays requires days to be an array of days string.");
+        }
+
+        days = Helpers.daysToIntegers(days);
+        return `${minuteOfTheHour} ${hourOfTheDay} * * ${days}`
+    }
+
+    /**
      * Every Week
      */
     static everyWeek(): string {
@@ -203,24 +231,6 @@ class CronTime {
         Helpers.validateStartToEndDay(startDay, endDay);
 
         return `0 0 * * ${startDay}-${endDay}`
-    }
-
-
-    static onSpecificDays(days: (string | number)[]) {
-        if (!Array.isArray(days) || days.length) {
-            throw new Error("onSpecificDays requires days to be an array of days string.");
-        }
-        days = Helpers.daysToIntegers(days);
-        return `0 0 * * ${days}`
-    }
-
-    static onSpecificDaysAt(days: (string | number)[], hourOfTheDay: number, minuteOfTheHour: number = 0) {
-        if (!Array.isArray(days) || days.length === 0) {
-            throw new Error("onSpecificDays requires days to be an array of days string.");
-        }
-
-        days = Helpers.daysToIntegers(days);
-        return `${minuteOfTheHour} ${hourOfTheDay} * * ${days}`
     }
 
     /**
