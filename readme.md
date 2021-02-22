@@ -1,6 +1,6 @@
 # Cron-Time
 
-Cron Time Expression Generator/Builder written in typescript.
+Cron Time Expression Generator/Builder written in Typescript.
 
 Tested on [CronTab.Guru](https://crontab.guru)
 
