@@ -4,15 +4,15 @@ import Helpers from "./helpers";
 type TimeInterval = number | "even" | "uneven" | number[];
 type StringToAnyObject = { [key: string]: any };
 type EveryTimeConfig = {
-    between?: boolean
-}
+    between?: boolean;
+};
 
 /**
  * Every Time Class
  */
 class EveryTime {
     public interval: TimeInterval = 1;
-    public config: EveryTimeConfig = {}
+    public config: EveryTimeConfig = {};
 
     /**
      *
@@ -33,11 +33,7 @@ class EveryTime {
     minutes(): string {
         if (this.config["between"] && Array.isArray(this.interval)) {
             this.config["between"] = false;
-            return Helpers.spliceIntoPosition(
-                0,
-                this.interval.join("-"),
-                Helpers.minute()
-            );
+            return Helpers.spliceIntoPosition(0, this.interval.join("-"), Helpers.minute());
         }
 
         if (typeof this.interval === "number" && this.interval > 1) {
@@ -48,7 +44,6 @@ class EveryTime {
 
         return Helpers.minute();
     }
-    
 
     /**
      * Every nth Hour
@@ -58,11 +53,7 @@ class EveryTime {
 
         if (this.config["between"] && Array.isArray(this.interval)) {
             this.config["between"] = false;
-            return Helpers.spliceIntoPosition(
-                1,
-                this.interval.join("-"),
-                hour
-            );
+            return Helpers.spliceIntoPosition(1, this.interval.join("-"), hour);
         }
 
         if (typeof this.interval === "number" && this.interval > 1) {
@@ -84,13 +75,8 @@ class EveryTime {
 
         if (this.config["between"] && Array.isArray(this.interval)) {
             this.config["between"] = false;
-            return Helpers.spliceIntoPosition(
-                2,
-                this.interval.join("-"),
-                day
-            );
+            return Helpers.spliceIntoPosition(2, this.interval.join("-"), day);
         }
-
 
         if (typeof this.interval === "number" && this.interval > 1) {
             return Helpers.spliceIntoPosition(2, "*/" + this.interval, day);
@@ -100,8 +86,6 @@ class EveryTime {
 
         return day;
     }
-
-
 }
 
 export = EveryTime;

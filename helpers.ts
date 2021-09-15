@@ -1,4 +1,7 @@
-const DaysDictionary: Record<string,number> = {
+/**
+ * Days dictionary.
+ */
+const DaysDictionary: Record<string, number> = {
     sun: 0,
     mon: 1,
     tue: 2,
@@ -12,36 +15,51 @@ const DaysDictionary: Record<string,number> = {
     wednesday: 3,
     thursday: 4,
     friday: 5,
-    saturday: 6,
+    saturday: 6
 };
 
 export = {
     /**
+     * Put a character in a string using position.
      * @param {number} position
-     * @param {*} value
+     * @param {*} char
      * @param {string} str
      */
-    spliceIntoPosition(position: number, value: string, str: string | undefined = undefined): string {
+    spliceIntoPosition(
+        position: number,
+        char: string,
+        str: string | undefined = undefined
+    ): string {
         if (str === undefined) {
             str = this.minute();
         }
 
-        let def = str.split(' ');
-        def.splice(position, 1, value);
-        return def.join(' ');
+        let def = str.split(" ");
+        def.splice(position, 1, char);
+        return def.join(" ");
     },
 
-
+    /**
+     * Get cron minute string.
+     */
     minute(): string {
-        return '* * * * *';
+        return "* * * * *";
     },
 
+    /**
+     * Get cron hour String.
+     */
     hour(): string {
-        return '0 * * * *'
+        return "0 * * * *";
     },
 
+    /**
+     * Get Cron day string, with option of setting: `hourOfTheDay and minuteOfTheHour`
+     * @param hourOfTheDay
+     * @param minuteOfTheHour
+     */
     day(hourOfTheDay: number = 0, minuteOfTheHour: number = 0): string {
-        return `${minuteOfTheHour} ${hourOfTheDay} * * *`
+        return `${minuteOfTheHour} ${hourOfTheDay} * * *`;
     },
 
     /**
@@ -56,12 +74,10 @@ export = {
         if (typeof day === "number") return day;
         day = day.trim().toLowerCase();
 
-        if (!DaysDictionary.hasOwnProperty(day))
-            throw Error(`Day: "${day}" is not a valid day.`);
+        if (!DaysDictionary.hasOwnProperty(day)) throw Error(`Day: "${day}" is not a valid day.`);
 
         return DaysDictionary[day];
     },
-
 
     /**
      * Get the integer representation of multiple day strings.
@@ -71,7 +87,7 @@ export = {
         const newDays: number[] = [];
         for (const day of days) {
             if (typeof day === "string") {
-                newDays.push(this.dayToInt(day))
+                newDays.push(this.dayToInt(day));
             } else {
                 newDays.push(day);
             }
@@ -80,14 +96,14 @@ export = {
         return newDays;
     },
 
-
     /**
-     * Checks of startDay and endDay follows calendar sequence.
+     * Checks if startDay and endDay follows calendar sequence.
      * else throws error.
      * @param startDay
      * @param endDay
      */
     validateStartToEndDay(startDay: number, endDay: number) {
-        if (startDay > endDay) throw Error("startDay must come before endDay following normal calendar sequence.");
+        if (startDay > endDay)
+            throw Error("startDay must come before endDay following normal calendar sequence.");
     }
 };

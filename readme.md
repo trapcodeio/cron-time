@@ -5,6 +5,7 @@ Cron Time Expression Generator/Builder written in Typescript.
 Tested on [CronTab.Guru](https://crontab.guru)
 
 ### Install
+
 ```console
 npm install cron-time-generator
 ```
@@ -16,6 +17,7 @@ yarn add cron-time-generator
 ```
 
 ### Usage
+
 ```javascript
 const cronTime = require('cron-time-generator');
 // OR (Typescript)
@@ -50,7 +52,6 @@ cronTime.everyWeekDayAt(1, 30);
 // 30 1 * * 1-5
 // 1:30 AM from Monday to Friday
 
-
 cronTime.everyWeekend();
 // 0 0 * * 6,0
 // on Saturday and Sunday
@@ -67,6 +68,7 @@ For `everyWeekDay` and `everyWeekend` there is also an option to change the star
 By default, week days is from **Monday** to **Friday** while weekend days are **Saturdays** and **Sundays**
 
 This can be changed like so:
+
 ```javascript
 cronTime.everyWeekDay("sunday", "thursday");
 // 0 0 * * 0-4
@@ -84,12 +86,16 @@ cronTime.everyWeekendAt(1, 30, "friday", "saturday");
 // 30 1 * * 5,6
 // 1:30 AM on Friday and Saturday
 ```
-Note: if a `startDay` is specified then an `endDay` must be specified also, else it will use the default values which may not tally with your new `$startDay`
+
+Note: if a `startDay` is specified then an `endDay` must be specified also, else it will use the default values which
+may not tally with your new `$startDay`
 
 Every method of `CronTime` returns exactly what its name says.
 
 ### onSpecificDays and onSpecificDaysAt
+
 To target specific days
+
 ```javascript
 cronTime.onSpecificDays(['sunday', 'tuesday', 'thursday']); // 0 0 * * 0,2,4
 
@@ -98,6 +104,7 @@ cronTime.onSpecificDaysAt(['sunday', 'tuesday', 'thursday'], 3, 30); // 0 0 * * 
 ```
 
 ### Every Nth Time
+
 ```javascript
 const cronTime = require('cron-time-generator');
 
@@ -113,7 +120,6 @@ cronTime.every(7).days();
 cronTime.every(7).days(9, 5);
 // Every 7 days at 9:05
 
-
 cronTime.every('even').hours();
 // Every Even Hours
 // * */2 * * *
@@ -124,14 +130,13 @@ cronTime.every('uneven').hours();
 ```
 
 ### Between
+
 ```javascript
 const cronTime = require('cron-time-generator');
 
 cronTime.between(1, 4).days();
 // Between  1 - 4 th day of the month 
 ```
-
-
 
 ### All Functions
 

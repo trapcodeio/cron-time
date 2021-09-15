@@ -1,5 +1,5 @@
-import Helpers from './helpers';
-import EveryTime from './EveryTime';
+import Helpers from "./helpers";
+import EveryTime from "./EveryTime";
 
 /**
  * Cron Time Class
@@ -28,14 +28,13 @@ class CronTime {
         return Helpers.hour();
     }
 
-
     /**
      * Every Hour At
      * @param minuteOfTheHour - Minute of the hour.
      * @returns {string}
      */
     static everyHourAt(minuteOfTheHour: number): string {
-        return `${minuteOfTheHour} * * * *`
+        return `${minuteOfTheHour} * * * *`;
     }
 
     /**
@@ -69,7 +68,6 @@ class CronTime {
     static everySundayAt(hourOfTheDay: number, minuteOfTheHour: number = 0): string {
         return `${minuteOfTheHour} ${hourOfTheDay} * * SUN`;
     }
-
 
     /**
      * Every Monday
@@ -176,9 +174,8 @@ class CronTime {
             throw new Error("onSpecificDays requires days to be an array of days string.");
         }
         days = Helpers.daysToIntegers(days);
-        return `0 0 * * ${days}`
+        return `0 0 * * ${days}`;
     }
-
 
     /**
      * On Specific Days At
@@ -186,13 +183,17 @@ class CronTime {
      * @param {number} hourOfTheDay - Hour of the Day
      * @param {number} minuteOfTheHour - Minute of the hour
      */
-    static onSpecificDaysAt(days: (string | number)[], hourOfTheDay: number, minuteOfTheHour: number = 0) {
+    static onSpecificDaysAt(
+        days: (string | number)[],
+        hourOfTheDay: number,
+        minuteOfTheHour: number = 0
+    ) {
         if (!Array.isArray(days) || days.length === 0) {
             throw new Error("onSpecificDays requires days to be an array of days string.");
         }
 
         days = Helpers.daysToIntegers(days);
-        return `${minuteOfTheHour} ${hourOfTheDay} * * ${days}`
+        return `${minuteOfTheHour} ${hourOfTheDay} * * ${days}`;
     }
 
     /**
@@ -208,8 +209,12 @@ class CronTime {
      * @param {number} hourOfTheDay - Hour of the day.
      * @param {number} minuteOfTheHour - Minute of the hour
      */
-    static everyWeekAt(dayOfTheWeek: number | string, hourOfTheDay: number = 0, minuteOfTheHour: number = 0): string {
-        return `${minuteOfTheHour} ${hourOfTheDay} * * ${dayOfTheWeek}`
+    static everyWeekAt(
+        dayOfTheWeek: number | string,
+        hourOfTheDay: number = 0,
+        minuteOfTheHour: number = 0
+    ): string {
+        return `${minuteOfTheHour} ${hourOfTheDay} * * ${dayOfTheWeek}`;
     }
 
     /**
@@ -224,13 +229,16 @@ class CronTime {
      * cronTime.everyWeekDay('sunday', 'thursday')
      *  // Sunday to Thursday
      */
-    static everyWeekDay(startDay: string | number = 'monday', endDay: string | number = 'friday'): string {
+    static everyWeekDay(
+        startDay: string | number = "monday",
+        endDay: string | number = "friday"
+    ): string {
         startDay = Helpers.dayToInt(startDay);
         endDay = Helpers.dayToInt(endDay);
 
         Helpers.validateStartToEndDay(startDay, endDay);
 
-        return `0 0 * * ${startDay}-${endDay}`
+        return `0 0 * * ${startDay}-${endDay}`;
     }
 
     /**
@@ -241,13 +249,18 @@ class CronTime {
      * @param {number|string} endDay - Ending day
      * @returns {string}
      */
-    static everyWeekDayAt(hourOfTheDay: number, minuteOfTheHour: number = 0, startDay: string | number = 'monday', endDay: string | number = 'friday'): string {
+    static everyWeekDayAt(
+        hourOfTheDay: number,
+        minuteOfTheHour: number = 0,
+        startDay: string | number = "monday",
+        endDay: string | number = "friday"
+    ): string {
         startDay = Helpers.dayToInt(startDay);
         endDay = Helpers.dayToInt(endDay);
 
         Helpers.validateStartToEndDay(startDay, endDay);
 
-        return `${minuteOfTheHour} ${hourOfTheDay} * * ${startDay}-${endDay}`
+        return `${minuteOfTheHour} ${hourOfTheDay} * * ${startDay}-${endDay}`;
     }
 
     /**
@@ -262,11 +275,14 @@ class CronTime {
      * cronTime.everyWeekend('friday', 'saturday')
      *  // Friday and Saturday
      */
-    static everyWeekend(startDay: string | number = 'saturday', endDay: string | number = 'sunday'): string {
+    static everyWeekend(
+        startDay: string | number = "saturday",
+        endDay: string | number = "sunday"
+    ): string {
         startDay = Helpers.dayToInt(startDay);
         endDay = Helpers.dayToInt(endDay);
 
-        return `0 0 * * ${startDay},${endDay}`
+        return `0 0 * * ${startDay},${endDay}`;
     }
 
     /**
@@ -277,11 +293,16 @@ class CronTime {
      * @param {number|string} endDay - Ending day
      * @returns {string}
      */
-    static everyWeekendAt(hourOfTheDay: number, minuteOfTheHour: number = 0, startDay: string | number = 'saturday', endDay: string | number = 'sunday'): string {
+    static everyWeekendAt(
+        hourOfTheDay: number,
+        minuteOfTheHour: number = 0,
+        startDay: string | number = "saturday",
+        endDay: string | number = "sunday"
+    ): string {
         startDay = Helpers.dayToInt(startDay);
         endDay = Helpers.dayToInt(endDay);
 
-        return `${minuteOfTheHour} ${hourOfTheDay} * * ${startDay},${endDay}`
+        return `${minuteOfTheHour} ${hourOfTheDay} * * ${startDay},${endDay}`;
     }
 
     /**
@@ -305,7 +326,7 @@ class CronTime {
      * Every Year
      */
     static everyYear(): string {
-        return CronTime.everyYearIn(1)
+        return CronTime.everyYearIn(1);
     }
 
     /**
@@ -315,7 +336,12 @@ class CronTime {
      * @param hourOfTheDay - Hour of the day
      * @param minuteOfTheHour - Minute of the hour.
      */
-    static everyYearIn(monthOfTheYear: number, dayOfTheMonth: number = 1, hourOfTheDay: number = 0, minuteOfTheHour: number = 0): string {
+    static everyYearIn(
+        monthOfTheYear: number,
+        dayOfTheMonth: number = 1,
+        hourOfTheDay: number = 0,
+        minuteOfTheHour: number = 0
+    ): string {
         return `${minuteOfTheHour} ${hourOfTheDay} ${dayOfTheMonth} ${monthOfTheYear} *`;
     }
 
@@ -327,9 +353,8 @@ class CronTime {
     static between(start: number, end: number) {
         return new EveryTime([start, end], {
             between: true
-        })
+        });
     }
-
 }
 
 export = CronTime;
