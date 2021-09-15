@@ -1,8 +1,6 @@
-// @ts-check
 import Helpers from "./helpers";
 
 type TimeInterval = number | "even" | "uneven" | number[];
-type StringToAnyObject = { [key: string]: any };
 type EveryTimeConfig = {
     between?: boolean;
 };
@@ -19,7 +17,7 @@ class EveryTime {
      * @param {number[]|string|number} every
      * @param {{}} config
      */
-    constructor(every: TimeInterval, config: StringToAnyObject = {}) {
+    constructor(every: TimeInterval, config: EveryTimeConfig = {}) {
         if (every === "even") every = 2;
         this.interval = every;
 
