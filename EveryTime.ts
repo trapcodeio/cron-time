@@ -48,6 +48,7 @@ class EveryTime {
 
         return Helpers.minute();
     }
+    
 
     /**
      * Every nth Hour
@@ -80,12 +81,6 @@ class EveryTime {
      */
     days(hoursOfDay = 0, $minutesOfDay = 0): string {
         const day = Helpers.day(hoursOfDay, $minutesOfDay);
-
-        // if (this.config["at"]) {
-        //     this.config["at"] = false;
-        //
-        //     return Helpers.spliceIntoPosition(2, this.config.at, day);
-        // }
 
         if (this.config["between"] && Array.isArray(this.interval)) {
             this.config["between"] = false;
