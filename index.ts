@@ -171,7 +171,7 @@ class CronTime {
      */
     static onSpecificDays(days: (string | number)[]) {
         if (!Array.isArray(days) || days.length === 0) {
-            throw new Error("onSpecificDays requires days to be an array of days string.");
+            throw new Error("onSpecificDays expects days to be an array of days string.");
         }
         days = Helpers.daysToIntegers(days);
         return `0 0 * * ${days}`;
@@ -189,7 +189,7 @@ class CronTime {
         minuteOfTheHour: number = 0
     ) {
         if (!Array.isArray(days) || days.length === 0) {
-            throw new Error("onSpecificDays requires days to be an array of days string.");
+            throw new Error("onSpecificDaysAt expects days to be an array of days string.");
         }
 
         days = Helpers.daysToIntegers(days);
