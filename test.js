@@ -1,5 +1,5 @@
 const test = require("japa");
-const cronTime = require("./");
+const cronTime = require("./dist");
 
 test('everyMinute(): "* * * * *"', (assert) => {
     assert.equal(cronTime.everyMinute(), "* * * * *");
