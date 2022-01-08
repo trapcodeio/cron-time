@@ -1,6 +1,6 @@
 {
   "name": "cron-time-generator",
-  "version": "1.2.2",
+  "version": "1.3.0",
   "description": "Cron Time Expression Generator",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
