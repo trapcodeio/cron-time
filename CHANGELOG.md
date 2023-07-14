@@ -1,6 +1,6 @@
 ## Change Logs
 
-### next
+### 2.0.0
 - Create `CHANGELOG.md`
 - Update Packages to the latest version.
 - Set `CronTime` as default export of the package.
