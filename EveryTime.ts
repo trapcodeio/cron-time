@@ -86,4 +86,4 @@ class EveryTime {
     }
 }
 
-export = EveryTime;
+export default EveryTime;

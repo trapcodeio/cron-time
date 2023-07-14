@@ -18,7 +18,7 @@ const DaysDictionary: Record<string, number> = {
     saturday: 6
 };
 
-export = {
+export default {
     /**
      * Put a character in a string using position.
      * @param {number} position
@@ -54,7 +54,7 @@ export = {
     },
 
     /**
-     * Get Cron day string, with option of setting: `hourOfTheDay and minuteOfTheHour`
+     * Get Cron day string, with an option of setting: `hourOfTheDay and minuteOfTheHour`
      * @param hourOfTheDay
      * @param minuteOfTheHour
      */
@@ -97,7 +97,7 @@ export = {
     },
 
     /**
-     * Checks if startDay and endDay follows calendar sequence.
+     * Checks if startDay and endDay follows a calendar sequence.
      * else throws error.
      * @param startDay
      * @param endDay

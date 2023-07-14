@@ -4,7 +4,7 @@ import EveryTime from "./EveryTime";
 /**
  * Cron Time Class
  */
-class CronTime {
+export class CronTime {
     /**
      * Every nth Time
      * @return {EveryTime}
@@ -224,9 +224,9 @@ class CronTime {
      * @returns {string}
      *
      * @example
-     * cronTime.everyWeekDay()
+     * CronTime.everyWeekDay()
      *  // Monday to Friday
-     * cronTime.everyWeekDay('sunday', 'thursday')
+     * CronTime.everyWeekDay('sunday', 'thursday')
      *  // Sunday to Thursday
      */
     static everyWeekDay(
@@ -270,9 +270,9 @@ class CronTime {
      * @returns {string}
      *
      * @example
-     * cronTime.everyWeekend()
+     * CronTime.everyWeekend()
      *  // Saturday and Sunday
-     * cronTime.everyWeekend('friday', 'saturday')
+     * CronTime.everyWeekend('friday', 'saturday')
      *  // Friday and Saturday
      */
     static everyWeekend(
@@ -357,4 +357,4 @@ class CronTime {
     }
 }
 
-export = CronTime;
+export default CronTime;
