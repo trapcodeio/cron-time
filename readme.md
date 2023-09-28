@@ -216,3 +216,7 @@ CronTime.between(1, 4).days();
 `everyYear`
 
 `everyYearIn(month, day?, hour?, minute?)`
+
+`onSpecificDays([days])`
+
+`onSpecificDaysAt([days], hour, minute)`
