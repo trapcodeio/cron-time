@@ -54,12 +54,12 @@ export default {
     },
 
     /**
-     * Get Cron day string, with an option of setting: `hourOfTheDay and minuteOfTheHour`
-     * @param hourOfTheDay
-     * @param minuteOfTheHour
+     * Get Cron day string, with an option of setting: `hoursOfTheDay and minutesOfTheHour`
+     * @param hoursOfTheDay
+     * @param minutesOfTheHour
      */
-    day(hourOfTheDay: number = 0, minuteOfTheHour: number = 0): string {
-        return `${minuteOfTheHour} ${hourOfTheDay} * * *`;
+    day(hoursOfTheDay: number | number[] = 0, minutesOfTheHour: number | number[] = 0): string {
+        return `${minutesOfTheHour} ${hoursOfTheDay} * * *`;
     },
 
     /**
