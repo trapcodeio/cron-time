@@ -85,17 +85,7 @@ export default {
      */
     daysToIntegers(days: string | number | Array<string | number>): number[] {
         if (!Array.isArray(days)) days = [days];
-
-        const newDays: number[] = [];
-        for (const day of days) {
-            if (typeof day === "string") {
-                newDays.push(this.dayToInt(day));
-            } else {
-                newDays.push(day);
-            }
-        }
-
-        return newDays;
+        return days.map((day) => this.dayToInt(day));
     },
 
     /**

@@ -56,14 +56,7 @@ export class CronTime {
         hoursOfTheDay: number | number[],
         minutesOfTheHour: number | number[] = 0
     ): string {
-        return `${minutesOfTheHour} ${hoursOfTheDay} * * *`;
-    }
-
-    /**
-     * Every Sunday
-     */
-    static everySunday(): string {
-        return CronTime.everySundayAt(0);
+        return Helpers.day(hoursOfTheDay, minutesOfTheHour);
     }
 
     /**
@@ -79,10 +72,10 @@ export class CronTime {
     }
 
     /**
-     * Every Monday
+     * Every Sunday
      */
-    static everyMonday(): string {
-        return CronTime.everyMondayAt(0);
+    static everySunday(): string {
+        return CronTime.everySundayAt(0);
     }
 
     /**
@@ -98,10 +91,10 @@ export class CronTime {
     }
 
     /**
-     * Every Tuesday
+     * Every Monday
      */
-    static everyTuesday(): string {
-        return CronTime.everyTuesdayAt(0);
+    static everyMonday(): string {
+        return CronTime.everyMondayAt(0);
     }
 
     /**
@@ -117,10 +110,10 @@ export class CronTime {
     }
 
     /**
-     * Every Wednesday
+     * Every Tuesday
      */
-    static everyWednesday(): string {
-        return CronTime.everyWednesdayAt(0);
+    static everyTuesday(): string {
+        return CronTime.everyTuesdayAt(0);
     }
 
     /**
@@ -136,10 +129,10 @@ export class CronTime {
     }
 
     /**
-     * Every Thursday
+     * Every Wednesday
      */
-    static everyThursday(): string {
-        return CronTime.everyThursdayAt(0);
+    static everyWednesday(): string {
+        return CronTime.everyWednesdayAt(0);
     }
 
     /**
@@ -155,10 +148,10 @@ export class CronTime {
     }
 
     /**
-     * Every Friday
+     * Every Thursday
      */
-    static everyFriday(): string {
-        return CronTime.everyFridayAt(0);
+    static everyThursday(): string {
+        return CronTime.everyThursdayAt(0);
     }
 
     /**
@@ -174,10 +167,10 @@ export class CronTime {
     }
 
     /**
-     * Every Saturday
+     * Every Friday
      */
-    static everySaturday(): string {
-        return CronTime.everySaturdayAt(0);
+    static everyFriday(): string {
+        return CronTime.everyFridayAt(0);
     }
 
     /**
@@ -190,6 +183,13 @@ export class CronTime {
         minutesOfTheHour: number | number[] = 0
     ): string {
         return `${minutesOfTheHour} ${hoursOfTheDay} * * ${Days.saturday}`;
+    }
+
+    /**
+     * Every Saturday
+     */
+    static everySaturday(): string {
+        return CronTime.everySaturdayAt(0);
     }
 
     /**
