@@ -1,7 +1,7 @@
 /**
  * Days dictionary.
  */
-const DaysDictionary: Record<string, number> = {
+export const Days = {
     sun: 0,
     mon: 1,
     tue: 2,
@@ -74,16 +74,18 @@ export default {
         if (typeof day === "number") return day;
         day = day.trim().toLowerCase();
 
-        if (!DaysDictionary.hasOwnProperty(day)) throw Error(`Day: "${day}" is not a valid day.`);
+        if (!Days.hasOwnProperty(day)) throw Error(`Day: "${day}" is not a valid day.`);
 
-        return DaysDictionary[day];
+        return Days[day as keyof typeof Days];
     },
 
     /**
      * Get the integer representation of multiple day strings.
      * @param days
      */
-    daysToIntegers(days: (string | number)[]): number[] {
+    daysToIntegers(days: string | number | Array<string | number>): number[] {
+        if (!Array.isArray(days)) days = [days];
+
         const newDays: number[] = [];
         for (const day of days) {
             if (typeof day === "string") {

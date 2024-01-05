@@ -1,5 +1,8 @@
-import Helpers from "./helpers";
+import Helpers, { Days } from "./helpers";
 import EveryTime from "./EveryTime";
+
+type MinutesOfTheHour = number | number[];
+type HoursOfTheDay = number | number[];
 
 /**
  * Cron Time Class
@@ -49,7 +52,10 @@ export class CronTime {
      * @param {number|number[]} hoursOfTheDay - Hours of the day
      * @param {number|number[]} minutesOfTheHour - Minutes of the Hour
      */
-    static everyDayAt(hoursOfTheDay: number | number[], minutesOfTheHour: number | number[] = 0): string {
+    static everyDayAt(
+        hoursOfTheDay: number | number[],
+        minutesOfTheHour: number | number[] = 0
+    ): string {
         return `${minutesOfTheHour} ${hoursOfTheDay} * * *`;
     }
 
@@ -65,8 +71,11 @@ export class CronTime {
      * @param {number|number[]} hoursOfTheDay - Hours Of the Day
      * @param {number|number[]} minutesOfTheHour - Minutes of the hour.
      */
-    static everySundayAt(hoursOfTheDay: number | number[], minutesOfTheHour: number | number[] = 0): string {
-        return `${minutesOfTheHour} ${hoursOfTheDay} * * SUN`;
+    static everySundayAt(
+        hoursOfTheDay: number | number[],
+        minutesOfTheHour: number | number[] = 0
+    ): string {
+        return `${minutesOfTheHour} ${hoursOfTheDay} * * ${Days.sunday}`;
     }
 
     /**
@@ -81,8 +90,11 @@ export class CronTime {
      * @param {number|number[]} hoursOfTheDay - Hours Of the Day
      * @param {number|number[]} minutesOfTheHour - Minutes of the hour.
      */
-    static everyMondayAt(hoursOfTheDay: number | number[], minutesOfTheHour: number | number[] = 0): string {
-        return `${minutesOfTheHour} ${hoursOfTheDay} * * MON`;
+    static everyMondayAt(
+        hoursOfTheDay: number | number[],
+        minutesOfTheHour: number | number[] = 0
+    ): string {
+        return `${minutesOfTheHour} ${hoursOfTheDay} * * ${Days.monday}`;
     }
 
     /**
@@ -97,8 +109,11 @@ export class CronTime {
      * @param {number|number[]} hoursOfTheDay - Hours Of the Day
      * @param {number|number[]} minutesOfTheHour - Minutes of the hour.
      */
-    static everyTuesdayAt(hoursOfTheDay: number | number[], minutesOfTheHour: number | number[] = 0): string {
-        return `${minutesOfTheHour} ${hoursOfTheDay} * * TUE`;
+    static everyTuesdayAt(
+        hoursOfTheDay: number | number[],
+        minutesOfTheHour: number | number[] = 0
+    ): string {
+        return `${minutesOfTheHour} ${hoursOfTheDay} * * ${Days.tuesday}`;
     }
 
     /**
@@ -113,8 +128,11 @@ export class CronTime {
      * @param {number|number[]} hoursOfTheDay - Hours Of the Day
      * @param {number|number[]} minutesOfTheHour - Minutes of the hour.
      */
-    static everyWednesdayAt(hoursOfTheDay: number | number[], minutesOfTheHour: number | number[] = 0): string {
-        return `${minutesOfTheHour} ${hoursOfTheDay} * * WED`;
+    static everyWednesdayAt(
+        hoursOfTheDay: number | number[],
+        minutesOfTheHour: number | number[] = 0
+    ): string {
+        return `${minutesOfTheHour} ${hoursOfTheDay} * * ${Days.wednesday}`;
     }
 
     /**
@@ -129,8 +147,11 @@ export class CronTime {
      * @param {number|number[]} hoursOfTheDay - Hours Of the Day
      * @param {number|number[]} minutesOfTheHour - Minutes of the hour.
      */
-    static everyThursdayAt(hoursOfTheDay: number | number[], minutesOfTheHour: number | number[] = 0): string {
-        return `${minutesOfTheHour} ${hoursOfTheDay} * * THU`;
+    static everyThursdayAt(
+        hoursOfTheDay: number | number[],
+        minutesOfTheHour: number | number[] = 0
+    ): string {
+        return `${minutesOfTheHour} ${hoursOfTheDay} * * ${Days.thursday}`;
     }
 
     /**
@@ -145,15 +166,18 @@ export class CronTime {
      * @param {number|number[]} hoursOfTheDay - Hours Of the Day
      * @param {number|number[]} minutesOfTheHour - Minutes of the hour.
      */
-    static everyFridayAt(hoursOfTheDay: number | number[], minutesOfTheHour: number | number[] = 0): string {
-        return `${minutesOfTheHour} ${hoursOfTheDay} * * FRI`;
+    static everyFridayAt(
+        hoursOfTheDay: number | number[],
+        minutesOfTheHour: number | number[] = 0
+    ): string {
+        return `${minutesOfTheHour} ${hoursOfTheDay} * * ${Days.friday}`;
     }
 
     /**
      * Every Saturday
      */
     static everySaturday(): string {
-        return CronTime.everySundayAt(0);
+        return CronTime.everySaturdayAt(0);
     }
 
     /**
@@ -161,8 +185,11 @@ export class CronTime {
      * @param {number|number[]} hoursOfTheDay - Hours Of the Day
      * @param {number|number[]} minutesOfTheHour - Minutes of the hour.
      */
-    static everySaturdayAt(hoursOfTheDay: number | number[], minutesOfTheHour: number | number[] = 0): string {
-        return `${minutesOfTheHour} ${hoursOfTheDay} * * SAT`;
+    static everySaturdayAt(
+        hoursOfTheDay: number | number[],
+        minutesOfTheHour: number | number[] = 0
+    ): string {
+        return `${minutesOfTheHour} ${hoursOfTheDay} * * ${Days.saturday}`;
     }
 
     /**
@@ -173,6 +200,7 @@ export class CronTime {
         if (!Array.isArray(days) || days.length === 0) {
             throw new Error("onSpecificDays expects days to be an array of days string.");
         }
+
         days = Helpers.daysToIntegers(days);
         return `0 0 * * ${days}`;
     }
@@ -214,7 +242,8 @@ export class CronTime {
         hoursOfTheDay: number | number[] = 0,
         minutesOfTheHour: number | number[] = 0
     ): string {
-        return `${minutesOfTheHour} ${hoursOfTheDay} * * ${daysOfTheWeek}`;
+        const days = Helpers.daysToIntegers(daysOfTheWeek);
+        return `${minutesOfTheHour} ${hoursOfTheDay} * * ${days}`;
     }
 
     /**
@@ -233,12 +262,7 @@ export class CronTime {
         startDay: string | number = "monday",
         endDay: string | number = "friday"
     ): string {
-        startDay = Helpers.dayToInt(startDay);
-        endDay = Helpers.dayToInt(endDay);
-
-        Helpers.validateStartToEndDay(startDay, endDay);
-
-        return `0 0 * * ${startDay}-${endDay}`;
+        return this.everyWeekDayAt(0, 0, startDay, endDay);
     }
 
     /**
@@ -279,10 +303,7 @@ export class CronTime {
         startDay: string | number = "saturday",
         endDay: string | number = "sunday"
     ): string {
-        startDay = Helpers.dayToInt(startDay);
-        endDay = Helpers.dayToInt(endDay);
-
-        return `0 0 * * ${startDay},${endDay}`;
+        return this.everyWeekendAt(0, 0, startDay, endDay);
     }
 
     /**
@@ -299,10 +320,8 @@ export class CronTime {
         startDay: string | number = "saturday",
         endDay: string | number = "sunday"
     ): string {
-        startDay = Helpers.dayToInt(startDay);
-        endDay = Helpers.dayToInt(endDay);
-
-        return `${minutesOfTheHour} ${hoursOfTheDay} * * ${startDay},${endDay}`;
+        const days = Helpers.daysToIntegers([startDay, endDay]);
+        return `${minutesOfTheHour} ${hoursOfTheDay} * * ${days}`;
     }
 
     /**
@@ -318,8 +337,13 @@ export class CronTime {
      * @param {number|number[]} hoursOfTheDay - Hours of the day
      * @param {number|number[]} minutesOfTheHour - Minutes of the hour
      */
-    static everyMonthOn(daysOfTheMonth: number | number[], hoursOfTheDay = 0, minutesOfTheHour: number | number[] = 0): string {
-        return `${minutesOfTheHour} ${hoursOfTheDay} ${daysOfTheMonth} * *`;
+    static everyMonthOn(
+        daysOfTheMonth: number | number[],
+        hoursOfTheDay: number | number[] = 0,
+        minutesOfTheHour: number | number[] = 0
+    ): string {
+        const days = Helpers.daysToIntegers(daysOfTheMonth);
+        return `${minutesOfTheHour} ${hoursOfTheDay} ${days} * *`;
     }
 
     /**
@@ -342,7 +366,8 @@ export class CronTime {
         hoursOfTheDay: number | number[] = 0,
         minutesOfTheHour: number | number[] = 0
     ): string {
-        return `${minutesOfTheHour} ${hoursOfTheDay} ${daysOfTheMonth} ${monthsOfTheYear} *`;
+        const days = Helpers.daysToIntegers(daysOfTheMonth);
+        return `${minutesOfTheHour} ${hoursOfTheDay} ${days} ${monthsOfTheYear} *`;
     }
 
     /**

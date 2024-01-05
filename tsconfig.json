@@ -85,6 +85,5 @@
   "exclude": [
     "dist",
     "dist/types",
-    "test.js"
   ]
 }
