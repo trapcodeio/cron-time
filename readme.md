@@ -167,56 +167,56 @@ CronTime.between(1, 4).days();
 
 `everyDay`
 
-`everyDayAt(hourOfTheDay)`
+`everyDayAt(hoursOfTheDay)`
 
 `everySunday`
 
-`everySundayAt(hour, minute?)`
+`everySundayAt(hours, minutes?)`
 
 `everyMonday`
 
-`everyMondayAt(hour, minute?)`
+`everyMondayAt(hours, minutes?)`
 
 `everyTuesday`
 
-`everyTuesdayAt(hour, minute?)`
+`everyTuesdayAt(hours, minutes?)`
 
 `everyWednesday`
 
-`everyWednesdayAt(hour, minute?)`
+`everyWednesdayAt(hours, minutes?)`
 
 `everyThursday`
 
-`everyThursdayAt(hour, minute?)`
+`everyThursdayAt(hours, minutes?)`
 
 `everyFriday`
 
-`everyFridayAt(hour, minute?)`
+`everyFridayAt(hours, minutes?)`
 
 `everySaturday`
 
-`everySaturdayAt(hour, minute?)`
+`everySaturdayAt(hours, minutes?)`
 
 `everyWeek`
 
-`everyWeekAt(day, hour?, minute?)`
+`everyWeekAt(days, hours?, minutes?)`
 
 `everyWeekDay`
 
-`everyWeekDayAt(hour, $minute, startDay, endDay)`
+`everyWeekDayAt(hours, minutes?, startDay?, endDay?)`
 
 `everyWeekend`
 
-`everyWeekendAt(hour, minute, startDay, endDay)`
+`everyWeekendAt(hours, minutes?, startDay?, endDay?)`
 
 `everyMonth`
 
-`everyMonthOn(day, hour?, minute?)`
+`everyMonthOn(days, hours?, minutes?)`
 
 `everyYear`
 
-`everyYearIn(month, day?, hour?, minute?)`
+`everyYearIn(months, days?, hours?, minutes?)`
 
-`onSpecificDays([days])`
+`onSpecificDays(days)`
 
-`onSpecificDaysAt([days], hour, minute)`
+`onSpecificDaysAt(days, hour, minutes?)`
